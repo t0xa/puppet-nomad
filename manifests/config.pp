@@ -34,7 +34,7 @@ class nomad::config (
     purge   => $purge,
     recurse => $purge,
   }
-  $nomad_config = lookup('nomad::config', Hash, 'deep', {})
+  $nomad_config = lookup('nomad::config', Data, 'deep', {})
 
   file { 'nomad nomad.json':
     ensure  => present,
