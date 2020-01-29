@@ -8,7 +8,7 @@ After=network-online.target
 User=<%= scope.lookupvar('nomad::user') %>
 Group=<%= scope.lookupvar('nomad::group') %>
 ExecReload=/bin/kill -HUP $MAINPID
-ExecStart=<%= scope.lookupvar('nomad::bin_dir') %>/nomad agent -config <%= scope.lookupvar('nomad::config_dir') %> <%= scope.lookupvar('nomad::extra_options') %>
+ExecStart=<%= scope.lookupvar('nomad::bin_dir') %>/nomad agent -config <%= scope.lookupvar('nomad::config_dir') %> -data-dir <%= scope.lookupvar('nomad::data_dir') %> <%= scope.lookupvar('nomad::extra_options') %>
 KillMode=process
 KillSignal=SIGINT
 LimitNOFILE=infinity
