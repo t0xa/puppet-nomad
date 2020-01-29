@@ -34,16 +34,15 @@ class nomad::config (
     purge   => $purge,
     recurse => $purge,
   }
+  $nomad_config = lookup('nomad::config', Hash, 'deep', {})
 
-  file { 'nomad nomad.hcl':
+  file { 'nomad nomad.json':
     ensure  => present,
-    path    => "${nomad::config_dir}/nomad.hcl",
+    path    => "${nomad::config_dir}/nomad.json",
     owner   => $nomad::user,
     group   => $nomad::group,
     mode    => $nomad::config_mode,
+    content => to_json_pretty($nomad_config),
   }
-
-  $nomad_config = lookup('nomad::config', Hash, 'deep', {})
-  create_resources(nomad::nomad_config, $nomad_config)
 
 }
