@@ -16,7 +16,7 @@ class nomad::params {
   }
 
   $bin_dir = $facts['os']['family'] ? {
-    'windows' => 'C:\\ProgramData\\nomad',
+    'windows' => 'C:\\Pr  ogramData\\nomad',
     default   => '/usr/local/bin'
   }
 
@@ -60,15 +60,6 @@ class nomad::params {
       $shell = '/sbin/nologin'
     }
     'Debian': {
-      $shell = '/usr/sbin/nologin'
-    }
-    'Archlinux': {
-      $shell = '/sbin/nologin'
-    }
-    'OpenSuSE': {
-      $shell = '/usr/sbin/nologin'
-    }
-    /SLE[SD]/: {
       $shell = '/usr/sbin/nologin'
     }
     default: {
