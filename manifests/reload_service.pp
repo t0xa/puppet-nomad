@@ -6,7 +6,7 @@
 #   include nomad::reload_service
 class nomad::reload_service {
 
-  if $nomad::manage_service == true and $nomad::service_ensure == 'running' {
+  #if $nomad::manage_service == true and $nomad::service_ensure == 'running' {
     # Make sure we don't try to connect to 0.0.0.0, use 127.0.0.1 instead
     # This can happen if the consul agent RPC port is bound to 0.0.0.0
     /*if $consul::http_addr == '0.0.0.0' {
@@ -40,6 +40,6 @@ class nomad::reload_service {
       tries       => 3,
       try_sleep   => 10,
     }*/
-  }
+  #}
 
 }
