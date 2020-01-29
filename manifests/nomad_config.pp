@@ -4,7 +4,7 @@
 #
 # @example
 #   include nomad::nomad_config
-class nomad::nomad_config(
+define nomad::nomad_config(
   String                            $setting = $title,
   Variant[String, Integer]          $value   = '',
   Enum['present', 'absent']         $ensure  = 'present',
