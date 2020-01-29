@@ -60,4 +60,22 @@ class nomad::install {
     }
   }
 
+  if ($nomad::manage_user) and ($nomad::install_method != 'docker' ) {
+    user { $nomad::user:
+      ensure => 'present',
+      system => true,
+      shell  => $nomad::shell,
+    }
+
+    if ($nomad::manage_group) and ($nomad::install_method != 'docker' ) {
+      Group[$nomad::group] -> User[$nomad::user]
+    }
+  }
+  if ($nomad::manage_group) and ($nomad::install_method != 'docker' ) {
+    group { $nomad::group:
+      ensure => 'present',
+      system => true,
+    }
+  }
+
 }
