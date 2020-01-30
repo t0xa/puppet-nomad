@@ -4,7 +4,7 @@
 #
 # @example
 #   include nomad::run_service
-class nomad::run_service {
+define nomad::run_service {
 
   if $nomad::manage_service == true and $nomad::install_method != 'docker' {
     service { 'nomad':

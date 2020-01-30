@@ -10,11 +10,6 @@ class nomad::config (
   Boolean $restart_on_change = $nomad::restart_on_change,
 ) {
 
-  $notify_service = $restart_on_change ? {
-    true    => Class['nomad::run_service'],
-    default => undef,
-  }
-
   case $nomad::init_style {
     'systemd': {
       systemd::unit_file { 'nomad.service':
@@ -44,7 +39,7 @@ class nomad::config (
     group   => $nomad::group,
     mode    => $nomad::config_mode,
     content => to_json_pretty($nomad_config),
-    notify  => Service["nomad"],
+    notify  => Service['nomad'],
   }
 
 }
