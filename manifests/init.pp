@@ -51,5 +51,4 @@ class nomad (
   Class['nomad::install']
   -> Class['nomad::config']
   -> Class['nomad::run_service']
-  -> Class['nomad::reload_service']
 }

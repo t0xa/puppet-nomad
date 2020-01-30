@@ -34,6 +34,7 @@ class nomad::config (
     purge   => $purge,
     recurse => $purge,
   }
+
   $nomad_config = lookup('nomad::config', Data, 'deep', {})
 
   file { 'nomad nomad.json':
@@ -43,7 +44,7 @@ class nomad::config (
     group   => $nomad::group,
     mode    => $nomad::config_mode,
     content => to_json_pretty($nomad_config),
-    notify  => Service['nomad']
+    notify  => $notify_service,
   }
 
 }
