@@ -6,13 +6,13 @@
 #   include nomad::run_service
 class nomad::run_service {
 
-
   if $nomad::manage_service == true and $nomad::install_method != 'docker' {
     service { 'nomad':
       ensure   => $nomad::service_ensure,
       name     => $nomad::service_name,
       enable   => $nomad::service_enable,
       provider => $nomad::init_style,
+      subscribe => File["${nomad::config_dir}/${nomad::config_file}"],
     }
   }
 

@@ -37,9 +37,9 @@ class nomad::config (
 
   $nomad_config = lookup('nomad::config', Data, 'deep', {})
 
-  file { 'nomad nomad.json':
+  file { "${nomad::config_dir}/${nomad::config_file}":
     ensure  => present,
-    path    => "${nomad::config_dir}/nomad.json",
+    path    => "${nomad::config_dir}/${nomad::config_file}",
     owner   => $nomad::user,
     group   => $nomad::group,
     mode    => $nomad::config_mode,

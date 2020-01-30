@@ -10,6 +10,8 @@ class nomad::params {
     }
   }
 
+  $config_file = "nomad.json"
+
   $config_dir = $facts['os']['family'] ? {
     'windows' => 'C:\\ProgramData\\nomad\\config',
     default   => '/etc/nomad'
