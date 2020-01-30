@@ -49,5 +49,5 @@ class nomad (
 
   Class['nomad::install']
   -> Class['nomad::config']
-  -> Class['nomad::run_service']
+  -> Resource['nomad::run_service']
 }
