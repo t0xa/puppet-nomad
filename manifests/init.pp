@@ -46,7 +46,6 @@ class nomad (
   contain 'nomad::install'
   contain 'nomad::config'
   contain 'nomad::run_service'
-  contain 'nomad::reload_service'
 
   Class['nomad::install']
   -> Class['nomad::config']
