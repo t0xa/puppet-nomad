@@ -44,7 +44,7 @@ class nomad::config (
     group   => $nomad::group,
     mode    => $nomad::config_mode,
     content => to_json_pretty($nomad_config),
-    notify  => $notify_service,
+    notify  => Service["nomad"],
   }
 
 }
