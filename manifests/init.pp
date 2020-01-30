@@ -25,6 +25,7 @@ class nomad (
   Optional[Stdlib::Absolutepath]        $archive_path         = undef,
   Boolean                               $purge_config_dir     = true,
   Boolean                               $restart_on_change    = true,
+  Boolean                               $manage_service       = true,
   String[1]                             $config_mode          = '0664',
   Boolean                               $pretty_config        = false,
   Integer                               $pretty_config_indent = 4,
@@ -49,5 +50,5 @@ class nomad (
 
   Class['nomad::install']
   -> Class['nomad::config']
-  -> Resource['nomad::run_service']
+  -> Class['nomad::run_service']
 }
