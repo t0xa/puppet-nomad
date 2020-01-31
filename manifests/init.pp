@@ -29,6 +29,7 @@ class nomad (
   String[1]                             $config_mode          = '0664',
   Boolean                               $pretty_config        = false,
   Integer                               $pretty_config_indent = 4,
+  Boolean                               $server               = false,
 ) inherits nomad::params {
 
   $real_download_url = pick(

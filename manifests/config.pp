@@ -30,7 +30,11 @@ class nomad::config (
     recurse => $purge,
   }
 
-  $nomad_config = lookup('nomad::config', Data, 'deep', {})
+  if $nomad::server == true {
+    $nomad_config = lookup('nomad::server::config', Data, 'deep', {})
+  } else {
+    $nomad_config = lookup('nomad::client::config', Data, 'deep', {})
+  }
 
   file { "${nomad::config_dir}/${nomad::config_file}":
     ensure  => present,
