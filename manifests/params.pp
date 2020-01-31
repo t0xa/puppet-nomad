@@ -49,8 +49,8 @@ class nomad::params {
       }
       $manage_user = true
       $manage_group = true
-      $user = 'nomad'
-      $group = 'nomad'
+      $user = 'root'
+      $group = 'root'
     }
   }
 
