@@ -47,8 +47,8 @@ class nomad::params {
       $config_defaults  = {
         data_dir => '/opt/nomad'
       }
-      $manage_user = true
-      $manage_group = true
+      $manage_user = false
+      $manage_group = false
       $user = 'root'
       $group = 'root'
     }
